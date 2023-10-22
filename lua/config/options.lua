@@ -9,6 +9,8 @@ vim.o.mouse = 'a'
 vim.o.foldmethod = 'syntax'
 vim.o.foldlevel = 99
 
+vim.g.mapleader = " "
+
 -- vim.cmd('colorscheme ron')
 -- vim.cmd('colorscheme slate')
 
