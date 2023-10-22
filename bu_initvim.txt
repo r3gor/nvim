@@ -1,0 +1,16 @@
+"
+:set number
+:set relativenumber
+:set autoindent
+:set tabstop=4
+:set shiftwidth=4
+:set smarttab
+:set softtabstop=4
+:set mouse=a
+:set whichwrap+=<,>,[,] " right move in the first char of non first line move to end of previous line
+:set foldmethod=syntax
+:set foldlevel=99
+
+:colorscheme ron
+xnoremap <leader>p "_dP
+"
