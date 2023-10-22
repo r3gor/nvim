@@ -5,7 +5,7 @@ return {
 	--end
 	-- config = true -- Tambien se puede con esto en lugar de lo anterior, ya lazy se encarga
 	opts = {
-		signcolumn = false,
+		-- signcolumn = false,
 		numhl = true,
 		max_file_length = 10000,
 	}
