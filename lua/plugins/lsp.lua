@@ -43,12 +43,19 @@ return {
         }
       }
     })
+    vim.g.pyright_python = 'python'
 
-    require("lspconfig").pyright.setup{}
+    require("lspconfig").pyright.setup{
+      on_attach = on_attach,
+    }
     require("lspconfig").tsserver.setup{
       on_attach = on_attach,
       cmd = { "typescript-language-server", "--stdio" }
     }
     -- require("lspconfig").eslint.setup{}
+    require'lspconfig'.gopls.setup{
+      on_attach = on_attach,
+    }
+
   end
 }
