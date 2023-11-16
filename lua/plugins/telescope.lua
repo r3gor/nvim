@@ -8,59 +8,37 @@ return {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make'
     } },
-  opts = {
-    extensions = {
-      fzf = {
-        fuzzy = true,                   -- false will only do exact matching
-        override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true,    -- override the file sorter
-        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-        -- the default case_mode is "smart_case"
-      },
-    },
-  },
   config = function(opts)
-    require('telescope').setup(opts)
-    require('telescope').load_extension('fzf')
-  end,
-  keys = {
-    {
-      "<leader>pp",
-      function()
-        require('telescope.builtin').git_files({ show_untracked = true })
-      end,
-      desc = "Telescope Git Files",
-    },
-    {
-      "<leader>pe",
-      function()
-        require("telescope.builtin").buffers()
-      end,
-      desc = "Telescope buffers",
-    },
-    {
-      "<leader>gs",
-      function()
-        require("telescope.builtin").git_status()
-      end,
-      desc = "Telescope Git status",
-    },
-    {
-      "<leader>gc",
-      function()
-        require("telescope.builtin").git_bcommits()
-      end,
-      desc = "Telescope Git status",
-    },
-    {
-      "<leader>gb",
-      function()
-        require("telescope.builtin").git_branches()
-      end,
-      desc = "Telescope Git branches",
-    },
-    {
-      "<leader>rp",
+    local telescope = require("telescope")
+    local actions = require("telescope.actions")
+
+    telescope.setup({
+      extensions = {
+        fzf = {
+          fuzzy = true,                   -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true,    -- override the file sorter
+          case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+          -- the default case_mode is "smart_case"
+        },
+      },
+    })
+    telescope.load_extension("fzf")
+
+    -- set keymaps
+    local keymap = vim.keymap -- for conciseness
+
+    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+    keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+    keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+    keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+
+    keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Buffers" })
+    keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { desc = "Git Status" })
+    keymap.set("n", "<leader>gc", "<cmd>Telescope git_bcommits<cr>", { desc = "Git BCommits" })
+    keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Git Branches" })
+    keymap.set("n", "<leader>ht", "<cmd>Telescope help_tags<cr>", { desc = "Help Tags" })
+    keymap.set("n", "<leader>cp",
       function()
         require("telescope.builtin").find_files({
           prompt_title = "Plugins",
@@ -77,27 +55,6 @@ return {
           end
         })
       end
-    },
-    {
-      "<leader>pf",
-      function()
-        require('telescope.builtin').find_files()
-      end,
-      desc = "Telescope Find Files",
-    },
-    {
-      "<leader>ph",
-      function()
-        require("telescope.builtin").help_tags()
-      end,
-      desc = "Telescope Help"
-    },
-    {
-      "<leader>bb",
-      function()
-        require("telescope").extensions.file_browser.file_browser({ path = "%:h:p", select_buffer = true })
-      end,
-      desc = "Telescope file browser"
-    }
-  },
+      , { desc = "Help Tags" })
+  end,
 }
