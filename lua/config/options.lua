@@ -12,25 +12,9 @@ vim.opt.smartcase = true      -- Do not ignore case if the search patter has upp
 vim.opt.splitright = true     -- New vert splits are on the right
 vim.opt.splitbelow = true     -- New horizontal splits, like `:help`, are on the bottom window
 
--- vim.o.foldcolumn = '1' -- '0' is not bad
+-- folding
+vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
-
--- vim.opt.foldmethod = "expr"
--- vim.o.foldlevel = 99
--- vim.o.nofoldenable = true
--- vim.o.foldmethod = "expr"
--- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-
-
--- vim.o.foldmethod = 'syntax'
--- vim.o.foldlevel = 99
-
-
--- vim.opt.hlsearch = true       -- Highlight search results
-
--- vim.cmd('colorscheme ron')
--- vim.cmd('colorscheme slate')
-
 
