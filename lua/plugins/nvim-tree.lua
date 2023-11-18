@@ -20,6 +20,7 @@ return {
       },
       -- change folder arrow icons
       renderer = {
+        root_folder_label = ":t",
         indent_markers = {
           enable = true,
         },
