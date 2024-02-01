@@ -11,8 +11,8 @@ return {
         auto_attach = false,
       },
     })
-    -- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-    vim.opt.winbar = "%{expand('%:t') .. ' ' .. v:lua.require'nvim-navic'.get_location()}"
+    vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+    -- vim.opt.winbar = "%{expand('%:t') .. ' ' .. v:lua.require'nvim-navic'.get_location()}"
 
   end
 }

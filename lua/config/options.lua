@@ -24,3 +24,7 @@ vim.o.undodir = vim.fn.stdpath("data") .. "/undo"
 vim.o.undolevels = 1000
 vim.o.undoreload = 10000
 
+-- prevent delete spaces at end of lines
+vim.cmd('set noautowriteall')
+vim.cmd('set noautowrite')
+

@@ -14,9 +14,9 @@ return {
     local opts = { noremap = true, silent = true }
 
     local on_attach = function(client, bufnr)
-      -- if client.server_capabilities.documentSymbolProvider then
-      --   navic.attach(client, bufnr)
-      -- end
+      if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+      end
 
       opts.buffer = bufnr
 
@@ -82,35 +82,26 @@ return {
     lspconfig["tsserver"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      autoformat = false,
     })
 
     -- configure css server
     lspconfig["cssls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      autoformat = false,
     })
 
     -- configure tailwindcss server
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      autoformat = false,
     })
 
-    -- configure svelte server
-    lspconfig["svelte"].setup({
+    lspconfig["gopls"].setup({
       capabilities = capabilities,
-      on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-
-        vim.api.nvim_create_autocmd("BufWritePost", {
-          pattern = { "*.js", "*.ts" },
-          callback = function(ctx)
-            if client.name == "svelte" then
-              client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-            end
-          end,
-        })
-      end,
+      on_attach = on_attach,
     })
 
     -- configure prisma orm server
