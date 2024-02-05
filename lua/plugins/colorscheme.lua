@@ -17,6 +17,7 @@ return {
     priority = 1000,
     opts = {
       style = "storm",
+      transparent = true,
       on_colors = function(colors)
         colors.border = "#737aa2"
       end,
