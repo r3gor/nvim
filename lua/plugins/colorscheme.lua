@@ -15,7 +15,12 @@ return {
     "folke/tokyonight.nvim",
     lazy = true,
     priority = 1000,
-    opts = { style = "moon" },
+    opts = {
+      style = "storm",
+      on_colors = function(colors)
+        colors.border = "#737aa2"
+      end,
+    },
   },
   {
     "catppuccin/nvim",

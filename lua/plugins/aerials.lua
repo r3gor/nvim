@@ -13,7 +13,7 @@ return {
       },
     },
     filter_kind = {
-      typescriptreact = { "Constant, Class", "Constructor", "Module" },
+      typescriptreact = { "Constant", "Module" },
       javascriptreact = { "Constant" },
     },
   },

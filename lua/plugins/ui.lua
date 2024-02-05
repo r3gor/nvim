@@ -1,4 +1,5 @@
 return {
+  { "lukas-reineke/indent-blankline.nvim", enabled = false },
   {
     "rcarriga/nvim-notify",
     opts = {
@@ -9,7 +10,6 @@ return {
       top_down = false,
     },
   },
-  { "lukas-reineke/indent-blankline.nvim", enabled = false },
   {
     "folke/noice.nvim",
     opts = {
@@ -28,13 +28,32 @@ return {
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = true, -- add a border to hover docs and signature help
       },
-      -- messages = {
-      --   enabled = false,
-      -- },
-      -- notify = {
-      --   enabled = false,
-      --   view = "notify",
-      -- },
+    },
+  },
+  {
+    "b0o/incline.nvim",
+    event = "BufReadPre",
+    priority = 1200,
+    opts = {
+      highlight = {
+        groups = {
+          InclineNormal = { guibg = "#9A1B67", guifg = "#FFD580" },
+          InclineNormalNC = { guifg = "#5B6E74", guibg = "#1A1B26" },
+        },
+      },
+      window = { margin = { vertical = 0, horizontal = 1 } },
+      hide = {
+        cursorline = true,
+      },
+      render = function(props)
+        local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+        if vim.bo[props.buf].modified then
+          filename = "[+] " .. filename
+        end
+
+        local icon, color = require("nvim-web-devicons").get_icon_color(filename)
+        return { { icon, guifg = color }, { " " }, { filename } }
+      end,
     },
   },
 }
