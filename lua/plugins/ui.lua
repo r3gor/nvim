@@ -1,6 +1,28 @@
 return {
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
   {
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        offsets = {
+          {
+            filetype = "NvimTree",
+            text = "File Explorer",
+            highlight = "Directory",
+            text_align = "center",
+          },
+          {
+            filetype = "neo-tree",
+            text = "File Explorer",
+            highlight = "Directory",
+            text_align = "center",
+          },
+        },
+        always_show_bufferline = true,
+      },
+    },
+  },
+  {
     "rcarriga/nvim-notify",
     opts = {
       enabled = true,
